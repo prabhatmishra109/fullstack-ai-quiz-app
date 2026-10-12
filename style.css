@@ -1,0 +1,143 @@
+/* Navy Blue & Cream/White Theme with Advanced Animations */
+:root {
+    --navy-primary: #0f172a;
+    --navy-secondary: #1e293b;
+    --navy-accent: #2563eb;
+    --navy-hover: #1d4ed8;
+    --cream-bg: #f8fafc;
+    --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-gradient);
+    min-height: 100vh;
+}
+
+.bg-navy-gradient {
+    background: var(--bg-gradient);
+}
+
+.bg-navy-primary {
+    background-color: var(--navy-primary) !important;
+}
+
+.text-navy {
+    color: var(--navy-primary) !important;
+}
+
+.btn-navy {
+    background-color: var(--navy-primary);
+    color: #ffffff;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-navy:hover:not(:disabled) {
+    background-color: var(--navy-accent);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-outline-navy {
+    border: 2px solid var(--navy-primary);
+    color: var(--navy-primary);
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-navy:hover {
+    background-color: var(--navy-primary);
+    color: #ffffff;
+}
+
+.quiz-card {
+    background: #ffffff;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.25);
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* Subject & Topic Card Styling */
+.subject-card {
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.subject-card:hover {
+    border-color: var(--navy-accent);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
+    background: #ffffff;
+}
+
+.topic-item {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.topic-item:hover {
+    background: #f1f5f9;
+    border-color: var(--navy-accent);
+}
+
+/* Option Button Styling */
+.option-btn {
+    background-color: #f8fafc;
+    border: 2px solid #e2e8f0;
+    color: #334155;
+    font-weight: 500;
+    text-align: left;
+    padding: 14px 20px;
+    border-radius: 12px;
+    transition: all 0.2s ease-in-out;
+}
+
+.option-btn:hover:not(:disabled) {
+    background-color: #f1f5f9;
+    border-color: var(--navy-accent);
+    color: var(--navy-primary);
+    transform: translateX(4px);
+}
+
+.option-btn.correct {
+    background-color: #dcfce7 !important;
+    border-color: #22c55e !important;
+    color: #166534 !important;
+}
+
+.option-btn.incorrect {
+    background-color: #fee2e2 !important;
+    border-color: #ef4444 !important;
+    color: #991b1b !important;
+}
+
+.transition-all {
+    transition: width 0.4s ease-in-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeInUp 0.5s ease-out forwards;
+}

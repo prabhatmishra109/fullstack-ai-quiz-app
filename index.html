@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevMaster Pro | Full-Stack Java & AI Quiz Platform</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-navy-gradient min-vh-100 d-flex flex-column justify-content-between">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-navy-primary shadow-sm py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#">
+                <div class="bg-primary text-white rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+                    <i class="fa-solid fa-code fs-6"></i>
+                </div>
+                <span>DevMaster<span class="text-info">.AI</span></span>
+            </a>
+            <div class="d-flex align-items-center gap-3">
+                <span id="user-badge" class="badge bg-white text-navy px-3 py-2 rounded-pill fw-semibold shadow-sm">
+                    <i class="fa-solid fa-user-graduate me-1 text-primary"></i> Full-Stack & AI Track
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="container my-5 flex-grow-1 d-flex align-items-center justify-content-center">
+        <div class="row w-100 justify-content-center">
+            <div class="col-xl-9 col-lg-10">
+
+                <!-- VIEW 1: Subject / Topic Selection Dashboard -->
+                <div id="dashboard-view" class="card quiz-card shadow-lg border-0 rounded-4 p-4 p-md-5 animate-fade-in">
+                    <div class="text-center mb-5">
+                        <span class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill fw-semibold mb-2">
+                            <i class="fa-solid fa-laptop-code me-1"></i> Comprehensive Engineering Curriculum
+                        </span>
+                        <h2 class="fw-bold text-navy">Full-Stack Java & AI Master Quiz</h2>
+                        <p class="text-muted">Select a technology domain and topic to test your expertise with curated 20-50 question banks.</p>
+                    </div>
+
+                    <!-- Category Tabs / Filter -->
+                    <div id="subject-cards-container" class="row g-4 mb-4">
+                        <!-- Injected via script.js -->
+                    </div>
+                </div>
+
+                <!-- VIEW 2: Active Quiz Interface -->
+                <div id="quiz-view" class="card quiz-card shadow-lg border-0 rounded-4 p-4 p-md-5 d-none animate-fade-in">
+                    <!-- Quiz Header -->
+                    <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+                        <div>
+                            <button id="back-to-dash" class="btn btn-sm btn-outline-secondary rounded-pill mb-2">
+                                <i class="fa-solid fa-arrow-left me-1"></i> All Topics
+                            </button>
+                            <h4 id="active-topic-title" class="fw-bold text-navy m-0">Topic Name</h4>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <span id="timer-badge" class="badge bg-light text-navy px-3 py-2 rounded-pill shadow-sm fs-6">
+                                <i class="fa-regular fa-clock text-danger me-1"></i> <span id="time-left">30</span>s
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Progress & Score -->
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between text-muted small mb-1 fw-medium">
+                            <span id="progress-text">Question 1 of 20</span>
+                            <span id="score-text">Score: 0</span>
+                        </div>
+                        <div class="progress rounded-pill bg-light" style="height: 8px;">
+                            <div id="progress-bar" class="progress-bar bg-navy rounded-pill transition-all" role="progressbar" style="width: 5%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Question Container -->
+                    <div id="question-box">
+                        <h5 id="question-title" class="fw-semibold text-dark mb-4 fs-5">Loading question...</h5>
+
+                        <!-- Options List -->
+                        <div id="options-container" class="d-flex flex-column gap-3 mb-4">
+                            <!-- Injected dynamically -->
+                        </div>
+
+                        <!-- Explanation Box (Hidden initially) -->
+                        <div id="explanation-box" class="alert alert-info border-0 rounded-3 mb-4 d-none">
+                            <strong><i class="fa-solid fa-lightbulb me-1"></i> Explanation:</strong> <span id="explanation-text"></span>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button id="bookmark-btn" class="btn btn-outline-warning rounded-pill px-4 py-2">
+                                <i class="fa-regular fa-bookmark me-1"></i> Bookmark
+                            </button>
+                            <button id="next-btn" class="btn btn-navy px-5 py-3 rounded-pill fw-semibold shadow-sm" disabled>
+                                Next Question <i class="fa-solid fa-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIEW 3: Result Summary Screen -->
+                <div id="result-view" class="card quiz-card shadow-lg border-0 rounded-4 p-5 text-center d-none animate-fade-in">
+                    <div class="mb-4">
+                        <div class="result-icon-circle bg-success-subtle text-success mx-auto d-flex align-items-center justify-content-center rounded-circle mb-3 shadow-sm" style="width: 90px; height: 90px;">
+                            <i class="fa-solid fa-award fs-1"></i>
+                        </div>
+                        <h2 class="fw-bold text-navy">Quiz Completed Successfully!</h2>
+                        <p class="text-muted">Here is your performance breakdown for this topic.</p>
+                    </div>
+
+                    <div class="row g-3 mb-4 justify-content-center">
+                        <div class="col-md-4">
+                            <div class="card bg-light border-0 rounded-4 p-3">
+                                <h3 id="res-final-score" class="fw-bold text-navy mb-1">18 / 20</h3>
+                                <p class="text-secondary small mb-0 fw-medium">Correct Answers</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-light border-0 rounded-4 p-3">
+                                <h3 id="res-accuracy" class="fw-bold text-primary mb-1">90%</h3>
+                                <p class="text-secondary small mb-0 fw-medium">Accuracy Rate</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="performance-msg" class="alert alert-success border-0 rounded-4 p-3 mb-4 fw-medium text-dark">
+                        Outstanding mastery of the subject! You are ready for enterprise deployment.
+                    </div>
+
+                    <div class="d-flex justify-content-center gap-3">
+                        <button id="retake-btn" class="btn btn-outline-navy px-4 py-3 rounded-pill fw-semibold">
+                            <i class="fa-solid fa-rotate-right me-2"></i> Retake Quiz
+                        </button>
+                        <button id="home-btn" class="btn btn-navy px-5 py-3 rounded-pill fw-semibold shadow-sm">
+                            <i class="fa-solid fa-house me-2"></i> All Subjects & Topics
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-3 text-white-50 small">
+        <p class="mb-0">DevMaster Pro &copy; 2026 | Full-Stack Java, Spring Boot & Generative AI Interactive Curriculum</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Question Bank & Logic -->
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
